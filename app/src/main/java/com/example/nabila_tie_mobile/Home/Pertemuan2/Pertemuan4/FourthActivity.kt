@@ -1,7 +1,8 @@
-package com.example.nabila_tie_mobile.Pertemuan4
+package com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan4
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -33,7 +34,7 @@ class FourthActivity : AppCompatActivity() {
 
         // 1. Handling Snackbar
         val btnShowSnackbar = findViewById<Button>(R.id.btnShowSnackbar)
-        val rootView = findViewById<android.view.View>(R.id.main)
+        val rootView = findViewById<View>(R.id.main)
 
         btnShowSnackbar.setOnClickListener {
             Snackbar.make(rootView, "Ini adalah Snackbar", Snackbar.LENGTH_SHORT)

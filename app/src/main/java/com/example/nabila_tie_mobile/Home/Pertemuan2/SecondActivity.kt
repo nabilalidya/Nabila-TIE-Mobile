@@ -1,4 +1,4 @@
-package com.example.nabila_tie_mobile.Pertemuan2
+package com.example.nabila_tie_mobile.Home.Pertemuan2
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

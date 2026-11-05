@@ -1,58 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context=".MainActivity">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
 
     <TextView
-        android:id="@+id/tvHello"
+        android:id="@+id/tvHalo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selamat Datang!"
-        android:textColor="@color/white"
+        android:layout_marginBottom="24dp"
+        android:text="Halo, nabila!"
+        android:textColor="#FFFFFF"
         android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnToFourth"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnToFourth"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPertemuan4"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#6750A4"
         android:text="Pertemuan 4"
-        app:layout_constraintBottom_toTopOf="@+id/btnToFifth"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHello" />
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
 
-    <Button
-        android:id="@+id/btnToFifth"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPertemuan5"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#6750A4"
         android:text="Pertemuan 5"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnToFourth" />
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
+    <!-- Tombol untuk Buka SixthActivity (3 Fragment) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPertemuan6"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Logout (Pertemuan 6)"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnToFifth" />
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#6750A4"
+        android:text="Pertemuan 6 (Fragment)"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPertemuan7"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#6750A4"
+        android:text="Pertemuan 7"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#6750A4"
+        android:text="Logout"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
+
+</LinearLayout>

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".Pertemuan3.ThirdActivity">
+    tools:context=".Home.Pertemuan2.Pertemuan3.ThirdActivity">
 
     <ImageView
         android:id="@+id/imgPhone"

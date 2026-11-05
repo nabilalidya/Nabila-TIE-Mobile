@@ -1,4 +1,4 @@
-package com.example.nabila_tie_mobile.Pertemuan6
+package com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan6
 
 import android.content.Intent
 import android.os.Bundle

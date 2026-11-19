@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan11.EleventhActivity
 import com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan3.ThirdActivity
 import com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan4.FourthActivity
@@ -14,57 +14,80 @@ import com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan5.FifthActivity
 import com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan6.SixthActivity
 import com.example.nabila_tie_mobile.Home.Pertemuan2.Pertemuan7.SeventhActivity
 import com.example.nabila_tie_mobile.Home.Pertemuan2.pertemuan_10.TenthActivity
-import com.example.nabila_tie_mobile.R
+import com.example.nabila_tie_mobile.data.api.CatFactApiClient
+import com.example.nabila_tie_mobile.databinding.FragmentHomeBinding
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val btnP2: Button = view.findViewById(R.id.btnPertemuan2)
-        val btnP3: Button = view.findViewById(R.id.btnPertemuan3)
-        val btnP4: Button = view.findViewById(R.id.btnPertemuan4)
-        val btnP5: Button = view.findViewById(R.id.btnPertemuan5)
-        val btnP6: Button = view.findViewById(R.id.btnPertemuan6)
-        val btnP7: Button = view.findViewById(R.id.btnPertemuan7)
-        val btnP10: Button = view.findViewById(R.id.btnPertemuan10)
-        val btnP11: Button = view.findViewById(R.id.btnPertemuan11)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        btnP2.setOnClickListener {
+        // Navigasi tombol Pertemuan 2 - 11
+        binding.btnPertemuan2.setOnClickListener {
             startActivity(Intent(requireContext(), SecondActivity::class.java))
         }
 
-        btnP3.setOnClickListener {
+        binding.btnPertemuan3.setOnClickListener {
             startActivity(Intent(requireContext(), ThirdActivity::class.java))
         }
 
-        btnP4.setOnClickListener {
+        binding.btnPertemuan4.setOnClickListener {
             startActivity(Intent(requireContext(), FourthActivity::class.java))
         }
 
-        btnP5.setOnClickListener {
+        binding.btnPertemuan5.setOnClickListener {
             startActivity(Intent(requireContext(), FifthActivity::class.java))
         }
 
-        btnP6.setOnClickListener {
+        binding.btnPertemuan6.setOnClickListener {
             startActivity(Intent(requireContext(), SixthActivity::class.java))
         }
 
-        btnP7.setOnClickListener {
+        binding.btnPertemuan7.setOnClickListener {
             startActivity(Intent(requireContext(), SeventhActivity::class.java))
         }
 
-        btnP10.setOnClickListener {
+        binding.btnPertemuan10.setOnClickListener {
             startActivity(Intent(requireContext(), TenthActivity::class.java))
         }
 
-        btnP11.setOnClickListener {
+        binding.btnPertemuan11.setOnClickListener {
             startActivity(Intent(requireContext(), EleventhActivity::class.java))
         }
 
-        return view
+        // Langkah 5 Modul 12: Panggil loadCatFact() & event klik btnRefresh
+        loadCatFact()
+
+        binding.btnRefresh.setOnClickListener {
+            loadCatFact()
+        }
+    }
+
+    private fun loadCatFact() {
+        lifecycleScope.launch {
+            try {
+                val response = CatFactApiClient.apiService.getCatFact()
+                binding.tvCatFact.text = "\"${response.fact}\""
+            } catch (e: Exception) {
+                binding.tvCatFact.text = "Gagal mengambil fakta kucing."
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

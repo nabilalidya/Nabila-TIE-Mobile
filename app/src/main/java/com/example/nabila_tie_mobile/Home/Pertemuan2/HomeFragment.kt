@@ -102,13 +102,13 @@ class HomeFragment : Fragment() {
                 binding.rvGallery.adapter = adapter
 
                 /** List Tampil Vertical */
-                binding.rvGallery.layoutManager = LinearLayoutManager(requireContext())
+                // binding.rvGallery.layoutManager = LinearLayoutManager(requireContext())
 
                 /** List Tampil Horizontal */
                 // binding.rvGallery.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
                 /** List Tampil Grid */
-                // binding.rvGallery.layoutManager = GridLayoutManager(requireContext(), 2)
+                binding.rvGallery.layoutManager = GridLayoutManager(requireContext(), 2)
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Gagal memuat gambar", Toast.LENGTH_SHORT).show()
             }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.nabila_tie_mobile.Home.Pertemuan2.HomeFragment
 import com.example.nabila_tie_mobile.Message.MessageFragment
 import com.example.nabila_tie_mobile.More.MoreFragment
+import com.example.nabila_tie_mobile.Note.NoteFragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -21,6 +22,8 @@ class BaseActivity : AppCompatActivity() {
 
         val mainView = findViewById<android.view.View>(R.id.main)
         toolbar = findViewById(R.id.toolbarBase)
+        setSupportActionBar(toolbar)
+
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
 
         if (mainView != null) {
@@ -44,8 +47,12 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(MessageFragment(), "Message")
                     true
                 }
+                R.id.note -> {
+                    replaceFragment(NoteFragment(), "Note")
+                    true
+                }
                 R.id.more -> {
-                    replaceFragment(MoreFragment(), "Message")
+                    replaceFragment(MoreFragment(), "More")
                     true
                 }
                 else -> false
@@ -55,6 +62,7 @@ class BaseActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment, title: String) {
         toolbar.title = title
+        supportActionBar?.title = title
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()

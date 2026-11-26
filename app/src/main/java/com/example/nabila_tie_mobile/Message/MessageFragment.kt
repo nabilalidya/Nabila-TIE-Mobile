@@ -8,8 +8,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import com.example.nabila_tie_mobile.Message.tutorial.TutorialMessageActivity
 import com.example.nabila_tie_mobile.R
 import com.example.nabila_tie_mobile.databinding.FragmentMessageBinding
@@ -41,30 +43,30 @@ class MessageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup Toolbar & aktifkan Option Menu
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (requireActivity() as AppCompatActivity).supportActionBar?.apply {
-            title = "Message"
-        }
-        setHasOptionsMenu(true)
+        setupToolbarMenu()
 
         val adapter = MessageAdapter(requireContext(), messageList)
         binding.listMessageItems.adapter = adapter
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.message_toolbar_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_tutorial -> {
-                val intent = Intent(requireContext(), TutorialMessageActivity::class.java)
-                startActivity(intent)
-                true
+    private fun setupToolbarMenu() {
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.message_toolbar_menu, menu)
             }
-            else -> super.onOptionsItemSelected(item)
-        }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_tutorial -> {
+                        val intent = Intent(requireContext(), TutorialMessageActivity::class.java)
+                        startActivity(intent)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onDestroyView() {

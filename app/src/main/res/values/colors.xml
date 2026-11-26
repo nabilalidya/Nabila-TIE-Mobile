@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Palet Biru Pastel -->
+    <color name="pastel_blue_primary">#6EA8DC</color>
+    <color name="pastel_blue_dark">#528BBE</color>
+    <color name="pastel_blue_light">#DCEEFF</color>
+    <color name="pastel_blue_card">#F2F8FF</color>
 </resources>

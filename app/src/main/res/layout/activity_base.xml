@@ -11,8 +11,8 @@
         android:id="@+id/toolbarBase"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#6750A4"
-        app:titleTextColor="#FFFFFF"
+        android:background="@color/pastel_blue_primary"
+        app:titleTextColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -21,6 +21,7 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/bg_gradient"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +32,9 @@
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/pastel_blue_primary"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
